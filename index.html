@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LingoBridge Translations</title>
+  <meta name="description" content="Professional translation services in English, Arabic, Malayalam, Urdu, French and more." />
+  <style>
+    :root {
+      --navy: #071b2f;
+      --navy-2: #0d2744;
+      --gold: #d4a63a;
+      --gold-light: #f7d875;
+      --white: #ffffff;
+      --gray-100: #f4f6f8;
+      --gray-200: #e8edf2;
+      --gray-400: #7a8795;
+      --gray-600: #37465a;
+      --text: #1d2733;
+      --shadow: 0 12px 35px rgba(7, 27, 47, 0.12);
+      --radius: 22px;
+      --container: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { padding: 0; margin: 0; list-style: none; }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.15;
+      color: var(--navy);
+      margin: 0 0 18px;
+      font-weight: 800;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      max-width: 700px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+      padding: 17px 30px;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--navy);
+      box-shadow: 0 10px 30px rgba(212, 166, 58, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 35px rgba(212, 166, 58, 0.45);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.35);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 27, 47, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 86px;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold), #f1d98f);
+      position: relative;
+      box-shadow: inset 0 0 0 2px rgba(7,27,47,0.18);
+    }
+
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 10px 10px 10px 10px;
+      border: 2px solid var(--navy);
+      border-top-color: transparent;
+      border-radius: 50%;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 10px;
+      transform: rotate(-12deg);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.96rem;
+    }
+
+    .nav a {
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .nav a:hover {
+      color: var(--white);
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 2px;
+      border-radius: 8px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav a:hover::after { width: 100%; }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(7, 27, 47, 0.85), rgba(7, 27, 47, 0.78)),
+        url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      color: var(--white);
+      min-height: 760px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(212,166,58,0.18), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,0.12), transparent 30%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 42px;
+      align-items: center;
+      padding: 70px 0;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      margin-bottom: 22px;
+      color: var(--gold-light);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 4vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      max-width: 690px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin: 22px 0 30px;
+      color: rgba(255,255,255,0.8);
+      max-width: 640px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-globe {
+      display: grid;
+      gap: 18px;
+    }
+
+    .globe-box {
+      width: 100%;
+      aspect-ratio: 1.05;
+      background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 30px;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .globe-box::before {
+      content: "";
+      width: 200px;
+      height: 200px;
+      border: 3px solid rgba(212, 166, 58, 0.75);
+      border-radius: 50%;
+      box-shadow: inset 0 0 30px rgba(255,255,255,0.15);
+      position: absolute;
+    }
+
+    .globe-box::after {
+      content: "";
+      width: 220px;
+      height: 220px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      position: absolute;
+      transform: scale(1.18);
+    }
+
+    .globe-lines {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 48%, rgba(255,255,255,0.12) 48%, rgba(255,255,255,0.12) 52%, transparent 52%),
+        linear-gradient(0deg, transparent 48%, rgba(255,255,255,0.12) 48%, rgba(255,255,255,0.12) 52%, transparent 52%);
+      border-radius: inherit;
+    }
+
+    .bridge {
+      position: absolute;
+      width: 180px;
+      height: 90px;
+      border: 4px solid rgba(212,166,58,0.9);
+      border-top: none;
+      border-radius: 0 0 90px 90px;
+      bottom: 36px;
+    }
+
+    .mini-stat {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 15px 18px;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 1.6rem;
+      color: var(--gold-light);
+    }
+
+    .mini-stat span {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--gray-600);
+      font-size: 1.05rem;
+      margin: 0 0 18px;
+    }
+
+    .about-points {
+      margin-top: 24px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .point {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      padding: 18px 20px;
+      border-radius: 16px;
+    }
+
+    .point-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 1.35rem;
+      background: rgba(212,166,58,0.12);
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+
+    .point h3 {
+      margin: 0 0 7px;
+      color: var(--navy);
+      font-size: 1.1rem;
+    }
+
+    .point p {
+      margin: 0;
+      font-size: 0.98rem;
+      color: var(--gray-600);
+    }
+
+    .about-image {
+      background: linear-gradient(160deg, rgba(7,27,47,0.93), rgba(13,39,68,0.84));
+      border-radius: 30px;
+      padding: 25px;
+      box-shadow: var(--shadow);
+      min-height: 500px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-image img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 22px;
+      filter: grayscale(0.15) contrast(1.05);
+    }
+
+    .languages-grid, .services-grid, .industry-grid, .why-grid, .team-grid, .testimonial-grid, .contact-grid {
+      display: grid;
+      gap: 28px;
+    }
+
+    .languages-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .language-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      padding: 30px 24px;
+      border-radius: 22px;
+      box-shadow: 0 10px 35px rgba(10,26,42,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .language-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 38px rgba(10,26,42,0.08);
+    }
+
+    .lang-flag {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    .language-card h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 1.3rem;
+    }
+
+    .language-card p {
+      margin: 0;
+      color: var(--gray-600);
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .service-card {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      border-radius: 22px;
+      padding: 28px 22px;
+      transition: 0.2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .service-icon {
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      font-size: 1.7rem;
+      background: rgba(212,166,58,0.12);
+      border-radius: 16px;
+      margin-bottom: 18px;
+    }
+
+    .service-card h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 1.2rem;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--gray-600);
+    }
+
+    .industries-section {
+      background: linear-gradient(180deg, #f7f9fb, #eef3f6);
+    }
+
+    .industry-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .industry-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      padding: 28px 22px;
+      border-radius: 22px;
+      box-shadow: 0 12px 32px rgba(10,26,42,0.05);
+    }
+
+    .industry-card .industry-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .industry-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+      color: var(--navy);
+    }
+
+    .industry-card p {
+      margin: 0;
+      color: var(--gray-600);
+    }
+
+    .why-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .why-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      padding: 28px 22px;
+      border-radius: 20px;
+      box-shadow: 0 12px 26px rgba(10,26,42,0.04);
+    }
+
+    .why-icon {
+      width: 62px;
+      height: 62px;
+      background: rgba(7,27,47,0.96);
+      color: var(--gold-light);
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+      border-radius: 16px;
+      margin-bottom: 18px;
+    }
+
+    .why-card h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 1.2rem;
+    }
+
+    .why-card p {
+      margin: 0;
+      color: var(--gray-600);
+    }
+
+    .process {
+      background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
+      color: var(--white);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .step {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 26px 18px;
+      position: relative;
+    }
+
+    .step-number {
+      color: var(--gold-light);
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .step h3 {
+      margin: 0 0 12px;
+      font-size: 1.06rem;
+      color: var(--white);
+    }
+
+    .step p {
+      margin: 0;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.95rem;
+    }
+
+    .team-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .team-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 16px 35px rgba(10,26,42,0.05);
+    }
+
+    .team-photo {
+      height: 270px;
+      background: linear-gradient(135deg, rgba(7,27,47,0.85), rgba(212,166,58,0.35));
+      position: relative;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      font-size: 4rem;
+      font-weight: 700;
+    }
+
+    .team-info {
+      padding: 22px 18px 24px;
+    }
+
+    .team-info h3 {
+      margin: 0 0 6px;
+      font-size: 1.25rem;
+      color: var(--navy);
+    }
+
+    .team-role {
+      margin: 0;
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.96rem;
+    }
+
+    .testimonial-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .quote-card {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      padding: 30px 24px;
+      border-radius: 22px;
+      box-shadow: 0 12px 30px rgba(10,26,42,0.04);
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+      letter-spacing: 0.15em;
+    }
+
+    .quote-card p {
+      margin: 0 0 18px;
+      color: var(--gray-600);
+      font-size: 1.05rem;
+    }
+
+    .quote-card .client {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .faq-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .faq {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(10,26,42,0.04);
+    }
+
+    .faq-item + .faq-item {
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 20px 22px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 1.04rem;
+      font-weight: 700;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .faq-question span:last-child {
+      font-size: 1.5rem;
+      color: var(--gold);
+      transition: transform 0.25s ease;
+    }
+
+    .faq-item.active .faq-question span:last-child {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      background: #fafbfc;
+    }
+
+    .faq-answer p {
+      margin: 0;
+      padding: 0 22px 20px;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1.05fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .contact-card, .quote-card-box {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 28px 22px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      color: var(--gray-600);
+    }
+
+    .contact-item .icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(212,166,58,0.12);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+
+    .contact-item strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .quote-form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 0.95rem;
+    }
+
+    .field input, .field select, .field textarea {
+      width: 100%;
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 14px 15px;
+      background: #fbfcfd;
+      font: inherit;
+      color: var(--text);
+      transition: border-color 0.2s ease;
+    }
+
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--gold);
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(212,166,58,0.12);
+    }
+
+    .field textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .site-footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.75);
+      padding: 24px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-inner,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .languages-grid,
+      .services-grid,
+      .industry-grid,
+      .why-grid,
+      .team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 16px;
+        right: 16px;
+        background: rgba(7,27,47,0.96);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 18px;
+        flex-direction: column;
+        padding: 16px;
+        gap: 14px;
+        display: none;
+        box-shadow: var(--shadow);
+      }
+
+      .nav.menu-open {
+        display: flex;
+      }
+
+      .languages-grid,
+      .services-grid,
+      .industry-grid,
+      .why-grid,
+      .team-grid,
+      .testimonial-grid,
+      .faq-wrap,
+      .form-row,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 680px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .brand {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#home" class="brand" aria-label="LingoBridge Translations home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>LingoBridge</span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+      <nav class="nav" id="site-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#languages">Languages</a>
+        <a href="#industries">Industries</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <div class="hero-tag">Bridging Languages. Connecting the World.</div>
+          <h1>Professional Translation Services</h1>
+          <p>
+            Breaking language barriers with accurate, culturally aware translation for
+            businesses, organizations, and individuals worldwide.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#services" class="btn btn-primary">Our Services</a>
+            <a href="#quote" class="btn btn-secondary">Get a Quote</a>
+          </div>
+        </div>
+
+        <div class="hero-globe">
+          <div class="hero-card globe-box">
+            <div class="globe-lines"></div>
+            <div class="bridge"></div>
+          </div>
+
+          <div class="mini-stat">
+            <div>
+              <strong>5K+</strong>
+              <span>Projects Completed</span>
+            </div>
+            <div>
+              <strong>24h</strong>
+              <span>Fast Response</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text">
+            <h2 class="section-title">Who We Are</h2>
+            <p>
+              LingoBridge Translations is a professional language service company providing
+              high-quality translation and language solutions for individuals, businesses and organizations.
+            </p>
+            <p>
+              We combine linguistic precision, cultural understanding, and industry expertise to help
+              clients communicate clearly across borders and languages.
+            </p>
+
+            <div class="about-points">
+              <div class="point">
+                <div class="point-icon">🎯</div>
+                <div>
+                  <h3>Our Mission</h3>
+                  <p>To make communication easier by providing accurate, reliable and culturally appropriate translations.</p>
+                </div>
+              </div>
+
+              <div class="point">
+                <div class="point-icon">🌍</div>
+                <div>
+                  <h3>Our Vision</h3>
+                  <p>To become a trusted global language partner connecting people and businesses across borders.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-image">
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80"
+              alt="Professional team discussion"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="languages">
+      <div class="container">
+        <h2 class="section-title" style="text-align:center;">Languages We Translate</h2>
+        <p class="section-subtitle">
+          Supporting major global languages and expanding to meet the needs of clients across industries.
+        </p>
+
+        <div class="languages-grid">
+          <article class="language-card">
+            <div class="lang-flag">🇬🇧</div>
+            <h3>English</h3>
+            <p>Business, legal, academic, and premium content translation.</p>
+          </article>
+
+          <article class="language-card">
+            <div class="lang-flag">🇸🇦</div>
+            <h3>Arabic</h3>
+            <p>Arabic to English and English to Arabic translation with local context.</p>
+          </article>
+
+          <article class="language-card">
+            <div class="lang-flag">🇮🇳</div>
+            <h3>Malayalam</h3>
+            <p>Regional and professional translations for local and global audiences.</p>
+          </article>
+
+          <article class="language-card">
+            <div class="lang-flag">🇺🇦</div>
+            <h3>Urdu</h3>
+            <p>Clear translations for formal documents and public communications.</p>
+          </article>
+
+          <article class="language-card">
+            <div class="lang-flag">🇫🇷</div>
+            <h3>French</h3>
+            <p>Professional communication and multilingual market content.</p>
+          </article>
+
+          <article class="language-card">
+            <div class="lang-flag">🇪🇸</div>
+            <h3>Spanish</h3>
+            <p>Business and customer-facing translations with accurate tone.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="container">
+        <h2 class="section-title" style="text-align:center;">Our Services</h2>
+        <p class="section-subtitle">
+          Tailored language solutions designed to help clients communicate with clarity and confidence.
+        </p>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">📝</div>
+            <h3>Translation</h3>
+            <p>Documents, articles, websites and business materials.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">💼</div>
+            <h3>Business Translation</h3>
+            <p>Company documents, emails, reports and presentations.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">⚖️</div>
+            <h3>Legal Translation</h3>
+            <p>Contracts, agreements and other legal documents.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🌐</div>
+            <h3>Website Translation</h3>
+            <p>Translate websites and digital content for international audiences.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">✍️</div>
+            <h3>Proofreading & Editing</h3>
+            <p>Improve grammar, clarity and accuracy across all content types.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🔄</div>
+            <h3>Arabic–English Translation</h3>
+            <p>Specialized translation between Arabic and English.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section industries-section" id="industries">
+      <div class="container">
+        <h2 class="section-title" style="text-align:center;">Industries We Serve</h2>
+        <p class="section-subtitle">Professional translation services for sectors that require precision and trust.</p>
+
+        <div class="industry-grid">
+          <article class="industry-card">
+            <div class="industry-icon">🏢</div>
+            <h3>Business</h3>
+            <p>Reports &amp; documents</p>
+          </article>
+
+          <article class="industry-card">
+            <div class="industry-icon">⚖️</div>
+            <h3>Legal</h3>
+            <p>Contracts &amp; agreements</p>
+          </article>
+
+          <article class="industry-card">
+            <div class="industry-icon">🎓</div>
+            <h3>Education</h3>
+            <p>Certificates &amp; academic documents</p>
+          </article>
+
+          <article class="industry-card">
+            <div class="industry-icon">🏥</div>
+            <h3>Healthcare</h3>
+            <p>Medical documents</p>
+          </article>
+
+          <article class="industry-card">
+            <div class="industry-icon">✈️</div>
+            <h3>Travel</h3>
+            <p>Travel &amp; tourism content</p>
+          </article>
+
+          <article class="industry-card">
+            <div class="industry-icon">💻</div>
+            <h3>Technology</h3>
+            <p>Websites &amp; software</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title" style="text-align:center;">Why Choose Us?</h2>
+        <p class="section-subtitle">Professional service, accuracy, and a client-first approach in every project.</p>
+
+        <div class="why-grid">
+          <article class="why-card">
+            <div class="why-icon">🎯</div>
+            <h3>Accuracy</h3>
+            <p>Carefully translated content that preserves meaning and intent.</p>
+          </article>
+
+          <article class="why-card">
+            <div class="why-icon">⚡</div>
+            <h3>Fast Delivery</h3>
+            <p>Professional work delivered within agreed deadlines.</p>
+          </article>
+
+          <article class="why-card">
+            <div class="why-icon">🔒</div>
+            <h3>Confidentiality</h3>
+            <p>Your documents remain private and protected throughout the process.</p>
+          </article>
+
+          <article class="why-card">
+            <div class="why-icon">🌍</div>
+            <h3>Cultural Understanding</h3>
+            <p>Translations adapted to the target audience and local context.</p>
+          </article>
+
+          <article class="why-card">
+            <div class="why-icon">💰</div>
+            <h3>Competitive Pricing</h3>
+            <p>Professional service at reasonable prices for every project.</p>
+          </article>
+
+          <article class="why-card">
+            <div class="why-icon">👨‍💼</div>
+            <h3>Professional Team</h3>
+            <p>Experienced translators and language specialists with subject knowledge.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process">
+      <div class="container">
+        <h2 class="section-title" style="text-align:center; color:#fff;">How It Works</h2>
+        <p class="section-subtitle" style="color: rgba(255,255,255,0.72);">
+          A simple and transparent process to deliver reliable translation services.
+        </p>
+
+        <div class="process-grid">
+          <div class="step">
+            <div class="step-number">01</div>
+            <h3>Submit Your Document</h3>
+            <p>Upload or send your document to get started.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">02</div>
+            <h3>Get a Quote</h3>
+            <p>We review your project and provide a fair price.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">03</div>
+            <h3>Translation</h3>
+            <p>Our translator works on your document with precision.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">04</div>
+            <h3>Quality Check</h3>
+            <p>The translation is checked, proofread, and refined.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">05</div>
+            <h3>Delivery</h3>
+            <p>You receive the completed translation on time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="team">
+      <div class="container">
+        <h2 class="section-title" style="text-align:center;">Our Team</h2>
+        <p class="section-subtitle">
+          Experienced professionals helping clients communicate clearly across languages.
+        </p>
+
+        <div class="team-grid">
+          <article class="team-card">
+            <div class="team-photo">MS</div>
+            <div class="team-info">
+              <h3>Muhammed Shamil</h3>
+              <p class="team-role">Founder &amp; Managing Director</p>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <div class="team-photo" style="background: linear-gradient(135deg, rgba(7,27,47,0.9), rgba(212,166,58,0.4));">AR</div>
+            <div class="team-info">
+              <h3>Ahmed Rahman</h3>
+              <p class="team-role">Senior Arabic Translator</p>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <div class="team-photo" style="background: linear-gradient(135deg, rgba(7,27,47,0.9), rgba(212,166,58,0.25));">AM</div>
+            <div class="team-info">
+              <h3>Aisha Mohammed</h3>
+              <p class="team-role">English Language Specialist</p>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <div class="team-photo" style="background: linear-gradient(135deg, rgba(7,27,47,0.9), rgba(212,166,58,0.32));">SA</div>
+            <div class="team-info">
+              <h3>Safa Ali</h3>
+              <p class="team-role">Proofreader &amp; Editor</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title" style="text-align:center;">Client Testimonials</h2>
+
+        <div class="testimonial-grid">
+          <article class="quote-card">
+            <div class="stars">★★★★★</div>
+            <p>“Excellent translation quality and very professional service.”</p>
+            <div class="client">— Business Client</div>
+          </article>
+
+          <article class="quote-card">
+            <div class="stars">★★★★★</div>
+            <p>“Our Arabic documents were translated accurately and delivered on time.”</p>
+            <div class="client">— Corporate Client</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title" style="text-align:center;">FAQ</h2>
+
+        <div class="faq-wrap">
+          <div class="faq">
+            <div class="faq-item active">
+              <button class="faq-question">
+                <span>How long does translation take?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer" style="max-height: 200px;">
+                <p>The delivery time depends on the length and complexity of the document.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Which languages do you support?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer">
+                <p>We provide translation between several major languages, including English, Arabic and Malayalam.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Do you provide proofreading?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes. We provide professional proofreading and editing services.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Are my documents confidential?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes. Client confidentiality is one of our priorities.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="quote-card-box" id="quote">
+            <h3 style="margin:0 0 16px; color: var(--navy); font-size: 2rem;">Get a Quote</h3>
+
+            <form class="quote-form" id="quoteForm">
+              <div class="form-row">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" placeholder="Your name" />
+                </div>
+
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" placeholder="you@example.com" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="source-lang">Source Language</label>
+                  <select id="source-lang">
+                    <option>English</option>
+                    <option>Arabic</option>
+                    <option>Malayalam</option>
+                    <option>Urdu</option>
+                    <option>French</option>
+                    <option>Spanish</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="target-lang">Target Language</label>
+                  <select id="target-lang">
+                    <option>Arabic</option>
+                    <option>English</option>
+                    <option>Malayalam</option>
+                    <option>Urdu</option>
+                    <option>French</option>
+                    <option>Spanish</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="service">Service</label>
+                  <select id="service">
+                    <option>Translation</option>
+                    <option>Business Translation</option>
+                    <option>Legal Translation</option>
+                    <option>Website Translation</option>
+                    <option>Proofreading &amp; Editing</option>
+                    <option>Arabic–English Translation</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="pages">Number of Pages</label>
+                  <input type="number" id="pages" placeholder="e.g. 10" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Tell us about your project"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: fit-content;">REQUEST A QUOTE</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <h2 class="section-title" style="text-align:center;">Contact Us</h2>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3 style="margin:0; color:var(--navy); font-size:2rem;">LingoBridge Translations</h3>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="icon">📍</div>
+                <div><strong>Location</strong> Kerala, India</div>
+              </div>
+
+              <div class="contact-item">
+                <div class="icon">📧</div>
+                <div><strong>Email</strong> info@lingobridge.com</div>
+              </div>
+
+              <div class="contact-item">
+                <div class="icon">📱</div>
+                <div><strong>Phone</strong> +91 XXXXX XXXXX</div>
+              </div>
+
+              <div class="contact-item">
+                <div class="icon">🕒</div>
+                <div><strong>Business Hours</strong> Monday – Saturday<br />9:00 AM – 6:00 PM</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3 style="margin:0 0 16px; color:var(--navy); font-size:1.8rem;">Follow Us</h3>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="icon">📷</div>
+                <div><strong>Instagram</strong> @lingobridge</div>
+              </div>
+
+              <div class="contact-item">
+                <div class="icon">💼</div>
+                <div><strong>LinkedIn</strong> LingoBridge Translations</div>
+              </div>
+
+              <div class="contact-item">
+                <div class="icon">👥</div>
+                <div><strong>Facebook</strong> LingoBridge Translations</div>
+              </div>
+
+              <div class="contact-item">
+                <div class="icon">💬</div>
+                <div><strong>WhatsApp</strong> +91 XXXXX XXXXX</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> LingoBridge Translations</div>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#languages">Languages</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const nav = document.getElementById("site-nav");
+
+    menuToggle.addEventListener("click", () => {
+      nav.classList.toggle("menu-open");
+    });
+
+    nav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => nav.classList.remove("menu-open"));
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.querySelectorAll(".faq-item").forEach(item => {
+      const btn = item.querySelector(".faq-question");
+      const answer = item.querySelector(".faq-answer");
+
+      btn.addEventListener("click", () => {
+        item.classList.toggle("active");
+
+        if (item.classList.contains("active")) {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        } else {
+          answer.style.maxHeight = "0px";
+        }
+      });
+    });
+
+    document.getElementById("quoteForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Thank you! Your quote request has been received. This is a demo form for your project.");
+      this.reset();
+    });
+  </script>
+</body>
+</html>
